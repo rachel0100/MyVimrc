@@ -3,21 +3,33 @@
 "https://github.com/tpope/vim-pathogen.git
 "http://mirnazim.org/writings/vim-plugins-i-use/
 execute pathogen#infect()
-:set rnu									"ruler
-:syntax on									"turns on syntax
-:set expandtab							" use spaces instead of tabs
-filetype plugin indent on
+
+
+"------------------------------------------------------------------
+"---------------------------- My Syntax ----------------------------
+:set rnu									   "Ruler
+:syntax on								   "Turns on syntax
+
+if has ("autocmd")
+   filetype plugin indent on
+endif
+
 "colorscheme codeschool	
-:set tabstop=3								"sets tab to be 4 spaces
-:set nowrap									"do not visually wrap long lines
-":set showmatch								"show matching parenthesis
+:set expandtab                      "Use softtabstop spaces instead of tab characters for indentation
+:set shiftwidth=3                   "Indent by 3 spaces when using >>, <<, == ect.
+:set softtabstop=3                  "Indent by 3 spaces when pressing <TA>
+:set autoindent                     "Keep indentation from pervious line
+:set smartindent                    "Automatically inserts indentation in some cases
+:set cindent                        "Like smartindent, but stricter and more customisable
+:set tabstop=3							 "sets tab to be 3 spaces
+" :set expandtab
+":set nowrap								 "do not visually wrap long lines
+":set showmatch							 "show matching parenthesis
 :set smartcase								"search case-insensitive if everything is lower case
 :set hlsearch								"highlight search terms
 :set incsearch								"highlight search terms as you type
 :set title									"set the terminal title
 :set nobackup								"do not create backup files
-:set ai										"auto indent
-:set si										"smart indent
 
 
 "----------------------------------------------------------------------------------
@@ -36,6 +48,18 @@ function FormatJSON(...)
         \ });\""
   execute "%! node -e " . code
 endfunction
+
+"----------------------------------------------------------------------------------
+"---------------------------- Javascript Libraries Syntax ----------------------------
+"https://github.com/othree/javascript-libraries-syntax.vim
+autocmd BufReadPre *.js let b:javascript_lib_use_jquery = 1
+autocmd BufReadPre *.js let b:javascript_lib_use_underscore = 1
+autocmd BufReadPre *.js let b:javascript_lib_use_backbone = 1
+autocmd BufReadPre *.js let b:javascript_lib_use_prelude = 1
+autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 1
+autocmd BufReadPre *.js let b:javascript_lib_use_d3 = 1
+autocmd BufReadPre *.js let b:javascript_lib_use_angularui = 1
+autocmd BufReadPre *.js let b:javascript_lib_use_angularuirouter = 1
 
 
 "----------------------------------------------------------------
